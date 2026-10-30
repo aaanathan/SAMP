@@ -1,0 +1,36 @@
+<UserControl x:Class="SAMP.App.Views.SetupView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:app="clr-namespace:SAMP.App">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid>
+        <StackPanel Width="480" Margin="0,30" Visibility="{Binding ShowRecoveryKey, Converter={x:Static app:BoolToVisibility.Instance}}">
+            <TextBlock Style="{StaticResource Heading}" Text="Save your recovery key"/>
+            <TextBlock TextWrapping="Wrap" Margin="0,0,0,12"
+                       Text="This key is the only way to reset the administrator password if it is lost. It is shown once and cannot be displayed again. Write it down or print it and keep it somewhere safe and offline – not on this computer."/>
+            <TextBox Text="{Binding RecoveryKey, Mode=OneWay}" IsReadOnly="True" FontFamily="Consolas" FontSize="18" TextWrapping="Wrap" Padding="12"/>
+            <Button Content="I have stored the recovery key" Command="{Binding AcknowledgeRecoveryCommand}" HorizontalAlignment="Left" Margin="0,12,0,0"/>
+        </StackPanel>
+        <StackPanel Width="440" Margin="0,30" Visibility="{Binding ShowRecoveryKey, Converter={x:Static app:BoolToVisibility.Inverse}}">
+            <TextBlock Style="{StaticResource Heading}" Text="Welcome – first-time setup"/>
+            <TextBlock TextWrapping="Wrap" Style="{StaticResource Label}" Margin="0,0,0,12"
+                       Text="Create the administrator account and the uninstall password. Everything is stored locally in an encrypted database. There is no password recovery by e-mail: keep both passwords safe."/>
+            <TextBlock Text="Administrator username" Style="{StaticResource Label}"/>
+            <TextBox Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Text="Display name" Style="{StaticResource Label}"/>
+            <TextBox Text="{Binding DisplayName, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Text="Administrator password (min. 12 characters)" Style="{StaticResource Label}"/>
+            <PasswordBox app:PasswordBoxHelper.BoundPassword="{Binding Password, Mode=TwoWay}"/>
+            <TextBlock Text="Confirm administrator password" Style="{StaticResource Label}"/>
+            <PasswordBox app:PasswordBoxHelper.BoundPassword="{Binding ConfirmPassword, Mode=TwoWay}"/>
+            <Separator Margin="0,8"/>
+            <TextBlock Text="Uninstall password (required to remove SAMP)" Style="{StaticResource Label}"/>
+            <PasswordBox app:PasswordBoxHelper.BoundPassword="{Binding UninstallPassword, Mode=TwoWay}"/>
+            <TextBlock Text="Confirm uninstall password" Style="{StaticResource Label}"/>
+            <PasswordBox app:PasswordBoxHelper.BoundPassword="{Binding ConfirmUninstallPassword, Mode=TwoWay}"/>
+            <TextBlock Style="{StaticResource ErrorText}" Text="{Binding ErrorMessage}"/>
+            <Button Content="Complete setup" Command="{Binding CompleteCommand}" IsDefault="True" HorizontalAlignment="Left"/>
+        </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</UserControl>

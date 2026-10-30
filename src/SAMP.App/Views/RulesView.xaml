@@ -1,0 +1,41 @@
+<UserControl x:Class="SAMP.App.Views.RulesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:app="clr-namespace:SAMP.App">
+    <Grid xmlns:vm="clr-namespace:SAMP.App.Core;assembly=SAMP.App.Core">
+        <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+        <StackPanel>
+            <TextBlock Style="{StaticResource Heading}" Text="Device rules"/>
+            <TextBlock Style="{StaticResource Label}" TextWrapping="Wrap" Margin="0,0,0,8"
+                       Text="Mass storage is blocked by default. Rules refine that by class, vendor, vendor+product or serial. The most specific rule wins; Block beats Allow when equal."/>
+        </StackPanel>
+        <DataGrid Grid.Row="1" ItemsSource="{Binding Rules}" SelectedItem="{Binding SelectedRule}" AutoGenerateColumns="False"
+                  IsReadOnly="True" SelectionMode="Single" HeadersVisibility="Column">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"/>
+                <DataGridTextColumn Header="Action" Binding="{Binding Action}" Width="70"/>
+                <DataGridTextColumn Header="Match" Binding="{Binding MatchType}" Width="110"/>
+                <DataGridTextColumn Header="Value" Binding="{Binding Value}" Width="*"/>
+                <DataGridTextColumn Header="Scope" Binding="{Binding Scope}" Width="110"/>
+                <DataGridCheckBoxColumn Header="On" Binding="{Binding Enabled}" Width="40"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Grid.Row="2" Margin="0,12,0,0">
+            <TextBlock Style="{StaticResource ErrorText}" Text="{Binding ErrorMessage}"/>
+            <TextBlock Style="{StaticResource InfoText}" Text="{Binding InfoMessage}"/>
+            <WrapPanel>
+                <StackPanel Margin="0,0,12,0" Width="150"><TextBlock Text="Name" Style="{StaticResource Label}"/><TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/></StackPanel>
+                <StackPanel Margin="0,0,12,0" Width="80"><TextBlock Text="Action" Style="{StaticResource Label}"/><ComboBox ItemsSource="{x:Static vm:RulesViewModel.Actions}" SelectedItem="{Binding Action}"/></StackPanel>
+                <StackPanel Margin="0,0,12,0" Width="130"><TextBlock Text="Match on" Style="{StaticResource Label}"/><ComboBox ItemsSource="{x:Static vm:RulesViewModel.MatchTypes}" SelectedItem="{Binding MatchType}"/></StackPanel>
+                <StackPanel Margin="0,0,12,0" Width="230"><TextBlock Text="Value (e.g. 08, 0951, 0951:1666, 0951:1666:SERIAL)" Style="{StaticResource Label}" TextWrapping="Wrap"/><TextBox Text="{Binding Value, UpdateSourceTrigger=PropertyChanged}"/></StackPanel>
+                <StackPanel Margin="0,0,12,0" Width="130"><TextBlock Text="Scope" Style="{StaticResource Label}"/><ComboBox ItemsSource="{x:Static vm:RulesViewModel.Scopes}" SelectedItem="{Binding Scope}"/></StackPanel>
+                <CheckBox Content="Enabled" IsChecked="{Binding Enabled}" VerticalAlignment="Center" Margin="0,8,12,0"/>
+            </WrapPanel>
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Save rule" Command="{Binding SaveCommand}"/>
+                <Button Content="New" Command="{Binding NewRuleCommand}"/>
+                <Button Content="Delete selected" Command="{Binding DeleteCommand}"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

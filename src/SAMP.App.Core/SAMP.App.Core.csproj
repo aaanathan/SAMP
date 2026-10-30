@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.3.2" />
+    <ProjectReference Include="..\SAMP.Core\SAMP.Core.csproj" />
+    <ProjectReference Include="..\SAMP.Client\SAMP.Client.csproj" />
+  </ItemGroup>
+</Project>

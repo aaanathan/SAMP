@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <AssemblyName>SAMP.UninstallGuard</AssemblyName>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SAMP.Core\SAMP.Core.csproj" />
+    <ProjectReference Include="..\SAMP.Usb\SAMP.Usb.csproj" />
+    <ProjectReference Include="..\SAMP.Ipc\SAMP.Ipc.csproj" />
+  </ItemGroup>
+</Project>

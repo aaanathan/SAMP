@@ -1,0 +1,21 @@
+<UserControl x:Class="SAMP.App.Views.LoginView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:app="clr-namespace:SAMP.App">
+    <Grid>
+        <StackPanel Width="340" VerticalAlignment="Center">
+            <TextBlock Style="{StaticResource Heading}" Text="Sign in to SAMP"/>
+            <TextBlock Text="{Binding UsbStateText}" Style="{StaticResource Label}" Margin="0,0,0,12"/>
+            <TextBlock Style="{StaticResource InfoText}" Text="{Binding DataContext.Notice, RelativeSource={RelativeSource AncestorType=Window}}"/>
+            <TextBlock Text="Username" Style="{StaticResource Label}"/>
+            <TextBox Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Text="Password" Style="{StaticResource Label}"/>
+            <PasswordBox app:PasswordBoxHelper.BoundPassword="{Binding Password, Mode=TwoWay}"/>
+            <TextBlock Style="{StaticResource ErrorText}" Text="{Binding ErrorMessage}"/>
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Sign in" Command="{Binding SignInCommand}" IsDefault="True"/>
+                <Button Content="Forgot password?" Command="{Binding ForgotPasswordCommand}" Background="Transparent" BorderThickness="0" Foreground="{StaticResource Accent}"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

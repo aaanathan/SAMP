@@ -1,0 +1,32 @@
+<UserControl x:Class="SAMP.App.Views.RecoveryView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:app="clr-namespace:SAMP.App">
+    <Grid>
+        <StackPanel Width="420" VerticalAlignment="Center" Visibility="{Binding ShowNewKey, Converter={x:Static app:BoolToVisibility.Inverse}}">
+            <TextBlock Style="{StaticResource Heading}" Text="Reset administrator password"/>
+            <TextBlock TextWrapping="Wrap" Style="{StaticResource Label}" Margin="0,0,0,12"
+                       Text="Enter the administrator username and the recovery key you saved during setup."/>
+            <TextBlock Text="Administrator username" Style="{StaticResource Label}"/>
+            <TextBox Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Text="Recovery key" Style="{StaticResource Label}"/>
+            <TextBox Text="{Binding RecoveryKey, UpdateSourceTrigger=PropertyChanged}" FontFamily="Consolas"/>
+            <TextBlock Text="New password" Style="{StaticResource Label}"/>
+            <PasswordBox app:PasswordBoxHelper.BoundPassword="{Binding NewPassword, Mode=TwoWay}"/>
+            <TextBlock Text="Confirm new password" Style="{StaticResource Label}"/>
+            <PasswordBox app:PasswordBoxHelper.BoundPassword="{Binding ConfirmPassword, Mode=TwoWay}"/>
+            <TextBlock Style="{StaticResource ErrorText}" Text="{Binding ErrorMessage}"/>
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Reset password" Command="{Binding ResetCommand}" IsDefault="True"/>
+                <Button Content="Back" Command="{Binding BackCommand}"/>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Width="480" VerticalAlignment="Center" Visibility="{Binding ShowNewKey, Converter={x:Static app:BoolToVisibility.Instance}}">
+            <TextBlock Style="{StaticResource Heading}" Text="Password reset – save the new recovery key"/>
+            <TextBlock TextWrapping="Wrap" Margin="0,0,0,12"
+                       Text="The old recovery key no longer works. Store this new one offline; it is shown only once."/>
+            <TextBox Text="{Binding NewRecoveryKey, Mode=OneWay}" IsReadOnly="True" FontFamily="Consolas" FontSize="18" TextWrapping="Wrap" Padding="12"/>
+            <Button Content="I have stored it – continue to sign in" Command="{Binding DoneCommand}" HorizontalAlignment="Left" Margin="0,12,0,0"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

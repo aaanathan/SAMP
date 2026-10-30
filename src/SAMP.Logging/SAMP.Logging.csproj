@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="System.Diagnostics.EventLog" Version="8.0.1" />
+    <ProjectReference Include="..\SAMP.Core\SAMP.Core.csproj" />
+    <ProjectReference Include="..\SAMP.Data\SAMP.Data.csproj" />
+  </ItemGroup>
+</Project>

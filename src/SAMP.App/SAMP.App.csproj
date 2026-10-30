@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <RootNamespace>SAMP.App</RootNamespace>
+    <AssemblyName>SAMP</AssemblyName>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- WinForms is only used for the tray icon; keep its types out of the global usings to avoid WPF name clashes. -->
+    <Using Remove="System.Windows.Forms" />
+    <Using Remove="System.Drawing" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SAMP.Core\SAMP.Core.csproj" />
+    <ProjectReference Include="..\SAMP.Client\SAMP.Client.csproj" />
+    <ProjectReference Include="..\SAMP.App.Core\SAMP.App.Core.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,25 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/SAMP.App.Core/SAMP.App.Core.csproj" />
+    <Project Path="src/SAMP.App/SAMP.App.csproj" />
+    <Project Path="src/SAMP.Client/SAMP.Client.csproj" />
+    <Project Path="src/SAMP.Core/SAMP.Core.csproj" />
+    <Project Path="src/SAMP.Data/SAMP.Data.csproj" />
+    <Project Path="src/SAMP.Ipc/SAMP.Ipc.csproj" />
+    <Project Path="src/SAMP.Logging/SAMP.Logging.csproj" />
+    <Project Path="src/SAMP.Monitor/SAMP.Monitor.csproj" />
+    <Project Path="src/SAMP.Security/SAMP.Security.csproj" />
+    <Project Path="src/SAMP.Service/SAMP.Service.csproj" />
+    <Project Path="src/SAMP.UninstallGuard/SAMP.UninstallGuard.csproj" />
+    <Project Path="src/SAMP.Usb/SAMP.Usb.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/SAMP.App.Tests/SAMP.App.Tests.csproj" />
+    <Project Path="tests/SAMP.Data.Tests/SAMP.Data.Tests.csproj" />
+    <Project Path="tests/SAMP.Installer.Tests/SAMP.Installer.Tests.csproj" />
+    <Project Path="tests/SAMP.Logging.Tests/SAMP.Logging.Tests.csproj" />
+    <Project Path="tests/SAMP.Security.Tests/SAMP.Security.Tests.csproj" />
+    <Project Path="tests/SAMP.Service.Tests/SAMP.Service.Tests.csproj" />
+    <Project Path="tests/SAMP.Usb.Tests/SAMP.Usb.Tests.csproj" />
+  </Folder>
+</Solution>
